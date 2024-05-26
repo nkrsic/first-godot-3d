@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Ball.tscn" type="PackedScene" id=2]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 60, 2, 60 )
@@ -25,10 +26,14 @@ transform = Transform( 1, 0, 0, 0, -0.020925, 0.999781, 0, -0.999781, -0.020925,
 shadow_enabled = true
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.999991, 0.00193886, -0.00389649, 0.0012401, 0.731242, 0.682117, 0.00417181, -0.682116, 0.731232, -2.70924, 38.8851, 48.5626 )
+transform = Transform( 0.99725, -0.0131312, 0.0729475, 0, 0.984182, 0.177162, -0.0741199, -0.176674, 0.981474, -0.203475, 12.0882, 37.3255 )
+current = true
 fov = 73.5403
 size = 50.0
 near = 0.52
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173543, -0.100799, 0.925682 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.101, 9.27991 )
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
