@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="CapsuleMesh" id=1]
+
+[sub_resource type="Skin" id=4]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.156863, 0.839216, 0.470588, 1 )
+
+[sub_resource type="CapsuleShape" id=2]
+
+[node name="Skeleton" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+skin = SubResource( 4 )
+skeleton = NodePath("")
+material/0 = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
+
+[node name="NeckPivot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.53805e-08, -1.03819 )
+
+[node name="Camera" type="Camera" parent="NeckPivot"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )

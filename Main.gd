@@ -1,8 +1,9 @@
 extends Node
 
-onready var cam1 = $Camera
+onready var stationary_cam = $StationaryCamera
 
 func _input(event):
 	print(event.as_text())
 	if event.is_action_pressed("ui_focus_next"):
-		cam1.current = not cam1.current
+		stationary_cam.current = not stationary_cam.current
+	
