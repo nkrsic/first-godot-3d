@@ -12,3 +12,9 @@ It uses Godot 3.6
 
 - https://www.youtube.com/watch?v=_7riD3FaZgI
 - https://app.gumroad.com/d/5b49b366ee1aca4078a76b7bb24c0edb
+
+## First Person Shooter features
+
+- https://youtu.be/v4IEPi1c0eE?si=2kIBVtzNTXSexkPu
+- https://youtu.be/xI_i2K9kAOw?si=HD3hImH4TGmNdzBV
+
