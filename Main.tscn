@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Ball.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Skeleton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://OuterCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://OuterCamera.gd" type="Script" id=6]
+[ext_resource path="res://ImmediateGeometry.gd" type="Script" id=7]
+[ext_resource path="res://Reticle.gd" type="Script" id=8]
+[ext_resource path="res://lonely_road_afternoon_puresky_1k.hdr" type="Texture" id=9]
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 60, 2, 60 )
@@ -17,6 +20,19 @@ size = Vector3( 60, 2, 60 )
 
 [sub_resource type="ShaderMaterial" id=5]
 shader = SubResource( 4 )
+
+[sub_resource type="PanoramaSky" id=7]
+panorama = ExtResource( 9 )
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 7 )
+tonemap_mode = 3
+tonemap_exposure = 0.65
+adjustment_enabled = true
+adjustment_brightness = 0.9
+adjustment_contrast = 1.25
+adjustment_saturation = 1.25
 
 [node name="Main" type="Node"]
 script = ExtResource( 3 )
@@ -44,13 +60,39 @@ size = 50.0
 near = 0.52
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06417, 9.28 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.064, 0 )
 
 [node name="Ball" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 
 [node name="Skeleton" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.4666, 2.55715 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 4.467, -16.443 )
+
+[node name="MeshInstance" parent="Skeleton" index="0"]
+transform = Transform( 1, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 1, 0 )
+
+[node name="Camera" parent="Skeleton/NeckPivot" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+projection = 0
+size = 16.0
+
+[node name="Control" type="Control" parent="Skeleton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Reticle" type="CenterContainer" parent="Skeleton/Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+mouse_filter = 2
+script = ExtResource( 8 )
+DOT_COLOR = Color( 1, 1, 1, 0.619608 )
 
 [node name="OuterCamera" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 40 )
@@ -69,4 +111,13 @@ margin_right = 111.0
 margin_bottom = 40.0
 text = "Toggle cameras"
 
+[node name="ImmediateGeometry" type="ImmediateGeometry" parent="."]
+script = ExtResource( 7 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/Button" to="." method="_on_Button_pressed"]
+
+[editable path="Skeleton"]
+[editable path="OuterCamera"]

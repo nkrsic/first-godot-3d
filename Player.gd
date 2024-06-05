@@ -2,7 +2,6 @@ extends KinematicBody
 
 export var speed = 14
 export var fall_acceleration = 75
-export var nik_index = 0.5
 
 var velocity = Vector3.ZERO
 
@@ -25,7 +24,7 @@ func _physics_process(delta):
 	# Ground Velocity	
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
-
+	
 	# Vertical velocity 
 #	if not is_on_floor(): 
 #		velocity.y = velocity.y - (fall_acceleration * delta)
