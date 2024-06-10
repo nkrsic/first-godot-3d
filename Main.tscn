@@ -78,7 +78,6 @@ transform = Transform( 1, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 1, 0 )
 
 [node name="Camera" parent="Skeleton/NeckPivot" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-projection = 0
 size = 16.0
 
 [node name="Control" type="Control" parent="Skeleton"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Skeleton.gd" type="Script" id=1]
+[ext_resource path="res://weapons/machinegun.obj" type="ArrayMesh" id=2]
 
 [sub_resource type="CapsuleMesh" id=1]
 
@@ -29,4 +30,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.53805e-08, -1.03819 )
 
 [node name="Camera" type="Camera" parent="NeckPivot"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
-projection = 1
+
+[node name="Weapon_Manager" type="Spatial" parent="NeckPivot/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.75 )
+
+[node name="Weapon_Rig" type="Spatial" parent="NeckPivot/Camera/Weapon_Manager"]
+
+[node name="Machinegun" type="MeshInstance" parent="NeckPivot/Camera/Weapon_Manager/Weapon_Rig"]
+transform = Transform( -15.8785, 1.39449, -1.38919, 1.38919, 15.9391, 0.121538, 1.39449, 0, -15.9391, 0.33, -0.5, -2 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../../../../..")

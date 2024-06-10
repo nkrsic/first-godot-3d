@@ -45,13 +45,23 @@ func _physics_process(delta):
 func shoot():
 	var space : PhysicsDirectSpaceState = get_world().direct_space_state
 
-	var from = $Camera.global_position
-	var to= $Camera.global_position - $Camera.global_transform.basis.z * 500
-	# print($Camera.global_transform.basis.z)
-	var collision = space.intersect_ray(from, to)
+	var screen_center = get_viewport().size / 2
+	print(screen_center)
+	var screen_origin = $Camera.project_ray_origin(screen_center)
+	var camera_ray_normal = $Camera.project_ray_normal(screen_center)
+	print(camera_ray_normal)
+	print(camera_ray_normal.length())
+	var end = screen_origin + $Camera.project_ray_normal(screen_center) * 500
+	var collision = space.intersect_ray(screen_origin, end)
+	
+#	var from = $Camera.global_position
+#	var to= $Camera.global_position - $Camera.global_transform.basis.z * 500
+#	# print($Camera.global_transform.basis.z)
+#	var collision = space.intersect_ray(from, to)
 	
 	if collision: 
 		print("Collision!")
 		print(collision.collider_id)
+		print(collision.collider)
 		var obj = instance_from_id(collision.collider_id)
 		print(obj.name)
