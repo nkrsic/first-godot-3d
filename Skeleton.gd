@@ -1,4 +1,5 @@
 extends KinematicBody
+signal fired_weapon(from, to)
 
 const SENS = 0.005
 
@@ -32,9 +33,10 @@ func _shoot():
 	var camera_ray_normal = camera.project_ray_normal(screen_center)
 	print(camera_ray_normal)
 	print(camera_ray_normal.length())
-	var end = screen_origin + camera.project_ray_normal(screen_center) * 500
+	var end = screen_origin + camera.project_ray_normal(screen_center) * 1000
 	var collision = space.intersect_ray(screen_origin, end, exclude)
 	
+	emit_signal("fired_weapon", screen_origin, end)
 #	var from = $Camera.global_position
 #	var to= $Camera.global_position - $Camera.global_transform.basis.z * 500
 #	# print($Camera.global_transform.basis.z)

@@ -2,6 +2,9 @@ extends ImmediateGeometry
 
 const CONST_ORANGE = Color(168, 131, 50, 1)
 
+var screen_origin: Vector3
+var end: Vector3
+
 func _ready():
 	material_override = SpatialMaterial.new()
 	#material_override.emission_enabled
@@ -16,12 +19,29 @@ func _ready():
 #	material_override.flags_unshaded = true
 	material_override.params_line_width = 3.0
 
+#func _process(delta):
+#	clear()
+#	begin(Mesh.PRIMITIVE_LINES)
+#	#set_color(Color(168, 131, 50))  # Set the line color
+#	set_normal(Vector3(0, 0, 1))  # Set the line normal
+#	add_vertex(Vector3(0, 0, 0))  # Start point of the line
+#	var to = get_node("../OuterCamera/Camera").global_transform.origin
+#	add_vertex(to)  # End point of the line
+#	end()
+
 func _process(delta):
 	clear()
 	begin(Mesh.PRIMITIVE_LINES)
-	#set_color(Color(168, 131, 50))  # Set the line color
 	set_normal(Vector3(0, 0, 1))  # Set the line normal
-	add_vertex(Vector3(0, 0, 0))  # Start point of the line
-	var to = get_node("../OuterCamera/Camera").global_transform.origin
-	add_vertex(to)  # End point of the line
+	add_vertex(screen_origin)  # Start point of the line
+	add_vertex(end)  # End point of the line
 	end()
+
+
+
+func _on_Skeleton_fired_weapon(from, to):
+	print("ImmediateGeometry received fired_weapon() signal")
+	print(from)
+	print(to)
+	screen_origin = from
+	end = to
