@@ -9,6 +9,8 @@ onready var exclude = [self]
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	print("Initial mouse mode:")
+	print(Input.get_mouse_mode())
 	
 func _unhandled_input(event):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
@@ -19,10 +21,21 @@ func _unhandled_input(event):
 
 func _input(event): 
 	if event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		print("Inside _input() with 'ui_cancel' event")
+		print(Input.mouse_mode)
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			print("Setting MOUSE_MODE_VISIBLE with conf:")
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			print(Input.mouse_mode)
+			get_tree().set_input_as_handled()
+		elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			print("Setting MOUSE_MODE_CAPTURED with conf:") 
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			print(Input.mouse_mode)
+			get_tree().set_input_as_handled()
+	
 	if event.is_action_pressed("mouse_shoot"):
 		_shoot()
-	
 
 func _shoot():
 	var space : PhysicsDirectSpaceState = get_world().direct_space_state
@@ -37,10 +50,6 @@ func _shoot():
 	var collision = space.intersect_ray(screen_origin, end, exclude)
 	
 	emit_signal("fired_weapon", screen_origin, end)
-#	var from = $Camera.global_position
-#	var to= $Camera.global_position - $Camera.global_transform.basis.z * 500
-#	# print($Camera.global_transform.basis.z)
-#	var collision = space.intersect_ray(from, to)
 	
 	if collision: 
 		print("Collision!")

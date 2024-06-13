@@ -28,3 +28,15 @@ func _physics_process(delta):
 	var is_on_floor = $FloorCheck.is_colliding()
 	if Input.is_action_just_pressed("ball_jump") and is_on_floor:
 		apply_central_impulse(Vector3.UP * jump_impulse)
+
+
+func _on_Ball_input_event(camera, event, position, normal, shape_idx):
+	print("Inside ball input event...")
+	print(event)
+	print(position)
+	if event is InputEventMouseButton:
+		print("Ball clicked!")
+		print(event.button_index)
+		print(event.button_mask)
+		apply_central_impulse(Vector3.UP * jump_impulse)
+

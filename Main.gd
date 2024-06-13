@@ -27,5 +27,17 @@ func _input(event):
 	if event.is_action_pressed("ui_focus_next"):
 		toggleCameras()
 	
+#	if event.is_action_pressed("ui_cancel"):
+#		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#		get_tree().set_input_as_handled()
+		
+#	if event.is_action_pressed("ui_cancel"):
+#		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+#			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+#			get_tree().set_input_as_handled()
+#		else: 
+#			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#			get_tree().set_input_as_handled()
+	
 func _on_Button_pressed():
 	toggleCameras()

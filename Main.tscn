@@ -152,6 +152,10 @@ margin_right = 400.0
 margin_bottom = 26.0
 color = Color( 0.623529, 0.827451, 0.337255, 1 )
 
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [node name="ImmediateGeometry" type="ImmediateGeometry" parent="."]
 script = ExtResource( 7 )
 
