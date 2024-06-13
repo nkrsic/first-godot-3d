@@ -162,6 +162,7 @@ script = ExtResource( 7 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
 
+[connection signal="draw_position" from="Ball" to="ImmediateGeometry" method="_on_Ball_draw_position"]
 [connection signal="fired_weapon" from="Skeleton" to="ImmediateGeometry" method="_on_Skeleton_fired_weapon"]
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/Button" to="." method="_on_Button_pressed"]
 

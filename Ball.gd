@@ -1,7 +1,9 @@
 extends RigidBody
+signal draw_position(position, normal)
 
 export var rolling_force = 40
 export var jump_impulse = 1000
+export var click_impulse = 200
 
 func _ready():
 	$CameraRig.set_as_toplevel(true)
@@ -34,9 +36,15 @@ func _on_Ball_input_event(camera, event, position, normal, shape_idx):
 	print("Inside ball input event...")
 	print(event)
 	print(position)
-	if event is InputEventMouseButton:
+	emit_signal("draw_position", position, normal)
+	if event is InputEventMouseButton and event.button_index == 1 and event.pressed == false:
 		print("Ball clicked!")
 		print(event.button_index)
 		print(event.button_mask)
 		apply_central_impulse(Vector3.UP * jump_impulse)
+		# TODO: 
+		# Adjust impulse direction based on position 
+		# and direction camera is facing (AKA an FPS 
+		# style kick to the ball) 
+		apply_impulse(position, position * click_impulse)
 

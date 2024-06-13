@@ -1,9 +1,12 @@
 extends ImmediateGeometry
 
 const CONST_ORANGE = Color(168, 131, 50, 1)
+const CONST_BLUE = Color("#3c91e6")
 
 var screen_origin: Vector3
 var end: Vector3
+var ball_click_position: Vector3
+var ball_click_normal: Vector3
 
 func _ready():
 	material_override = SpatialMaterial.new()
@@ -35,6 +38,16 @@ func _process(delta):
 	set_normal(Vector3(0, 0, 1))  # Set the line normal
 	add_vertex(screen_origin)  # Start point of the line
 	add_vertex(end)  # End point of the line
+	
+	# draw ball_click_position + normal
+	set_color(CONST_BLUE)
+	set_normal(Vector3(0,0,1))
+	add_vertex(Vector3(0,0,0))
+	add_vertex(ball_click_position)
+	
+	set_normal(Vector3(0,0,1))
+	add_vertex(ball_click_position)
+	add_vertex(ball_click_position + ball_click_normal)
 	end()
 
 
@@ -45,3 +58,8 @@ func _on_Skeleton_fired_weapon(from, to):
 	print(to)
 	screen_origin = from
 	end = to
+
+
+func _on_Ball_draw_position(position, normal):
+	ball_click_position = position
+	ball_click_normal = normal
