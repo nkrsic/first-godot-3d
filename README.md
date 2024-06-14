@@ -18,3 +18,42 @@ It uses Godot 3.6
 - https://youtu.be/v4IEPi1c0eE?si=2kIBVtzNTXSexkPu
 - https://youtu.be/xI_i2K9kAOw?si=HD3hImH4TGmNdzBV
 
+# Transparent / Glassy Materials
+
+SpatialMaterial
+- Flags
+	- Set 'Transparent'
+	- Set 'Use Shadow to Opacity'
+
+- Parameters
+	- Diffuse Mode == Burley
+	- Blend Mode == Mix OR Add
+		- For the UV layer selected, triplanar enabled can 
+		  add a frosted glass effect
+	- Cull Mode == Front OR Back
+
+- Metallic
+	- Metallic ~0.1
+	- Specular to taste in [0,1]
+
+- Roughness
+	- Roughness ~ 0.1
+
+- NormalMap
+	- Enabled
+	- Fiddle with scale to taste
+
+- Transmission
+	- Enabled
+
+- Fiddle with 'Refraction'
+- Fiddle with 'Detail'
+	- NoiseTexture under 'Mask' setting
+	- OpenSimplexNoise
+- Fiddle with Proximity Fade to taste
+- Fiddle with Distance Fade to taste
+
+- Baked Light
+	- Enable 'Use in Baked Light' to taste
+
+
