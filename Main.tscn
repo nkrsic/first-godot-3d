@@ -9,7 +9,7 @@
 [ext_resource path="res://ImmediateGeometry.gd" type="Script" id=7]
 [ext_resource path="res://Reticle.gd" type="Script" id=8]
 [ext_resource path="res://lonely_road_afternoon_puresky_1k.hdr" type="Texture" id=9]
-[ext_resource path="res://TranslucentPanel.tscn" type="PackedScene" id=10]
+[ext_resource path="res://HealthBarBackground.gd" type="Script" id=11]
 
 [sub_resource type="CubeMesh" id=2]
 size = Vector3( 60, 1, 60 )
@@ -146,6 +146,7 @@ margin_top = 9.0
 margin_right = 615.0
 margin_bottom = 39.0
 color = Color( 0.980392, 0.509804, 0.298039, 1 )
+script = ExtResource( 11 )
 
 [node name="HealthBar" type="ColorRect" parent="CanvasLayer/HealthBarBackground"]
 margin_top = 4.0
@@ -162,9 +163,6 @@ script = ExtResource( 7 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 6 )
-
-[node name="Spatial" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 3.3, 0, 0, 0, 3.3, 13, 2, -9 )
 
 [connection signal="draw_position" from="Ball" to="ImmediateGeometry" method="_on_Ball_draw_position"]
 [connection signal="fired_weapon" from="Skeleton" to="ImmediateGeometry" method="_on_Skeleton_fired_weapon"]

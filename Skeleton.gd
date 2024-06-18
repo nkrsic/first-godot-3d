@@ -2,6 +2,7 @@ extends KinematicBody
 signal fired_weapon(from, to)
 
 const SENS = 0.005
+const SPEED = 7.0
 
 onready var neck = $NeckPivot
 onready var camera = $NeckPivot/Camera
@@ -36,7 +37,21 @@ func _input(event):
 	
 	if event.is_action_pressed("mouse_shoot"):
 		_shoot()
-
+		
+func _physics_process(delta):
+	var velocity = Vector3()
+	var input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction = (neck.transform.basis * Vector3(input_direction.x, 0, input_direction.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)	
+		
+	move_and_slide(velocity)
+		
+		
 func _shoot():
 	var space : PhysicsDirectSpaceState = get_world().direct_space_state
 
