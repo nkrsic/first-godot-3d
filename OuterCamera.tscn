@@ -3,10 +3,9 @@
 [ext_resource path="res://player.glb" type="PackedScene" id=1]
 
 [node name="RotatingCamera" type="Position3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 7 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 10 )
 
 [node name="Camera" type="Camera" parent="."]
-projection = 1
 current = true
 size = 36.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://autumn_forest_04_1k.hdr" type="Texture" id=1]
 
@@ -13,9 +13,6 @@ ambient_light_color = Color( 0.501961, 0.501961, 0.501961, 1 )
 ambient_light_sky_contribution = 0.42
 tonemap_mode = 2
 tonemap_exposure = 0.4
-
-[sub_resource type="PlaneMesh" id=3]
-size = Vector2( 45, 45 )
 
 [sub_resource type="CubeMesh" id=4]
 
@@ -40,9 +37,6 @@ albedo_color = Color( 0.996078, 0.341176, 0.188235, 1 )
 
 [node name="WorldEnv" type="WorldEnvironment"]
 environment = SubResource( 2 )
-
-[node name="Plane" type="MeshInstance" parent="."]
-mesh = SubResource( 3 )
 
 [node name="ReferenceCube" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
