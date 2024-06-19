@@ -15,8 +15,12 @@ It uses Godot 3.6
 
 ## First Person Shooter features
 
-- https://youtu.be/v4IEPi1c0eE?si=2kIBVtzNTXSexkPu
-- https://youtu.be/xI_i2K9kAOw?si=HD3hImH4TGmNdzBV
+- https://youtu.be/v4IEPi1c0eE?si=2kIBVtzNTXSexkPu - Bramwell
+- https://youtu.be/xI_i2K9kAOw?si=HD3hImH4TGmNdzBV - StayAtHomeDev
+
+# Colors
+
+- Old orange-ish floor color: #d76565
 
 # Transparent / Glassy Materials
 

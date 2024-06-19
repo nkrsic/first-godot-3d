@@ -2,7 +2,7 @@ extends KinematicBody
 signal fired_weapon(from, to)
 
 const SENS = 0.005
-const SPEED = 7.0
+const SPEED = 10.0
 
 onready var neck = $NeckPivot
 onready var camera = $NeckPivot/Camera

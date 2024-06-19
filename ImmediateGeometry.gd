@@ -32,7 +32,11 @@ func _ready():
 #	add_vertex(to)  # End point of the line
 #	end()
 
-func _process(delta):
+# NOTE: 
+#
+# Changing this drawing to occur in _physics_process() instead of 
+# _process() seems to get rid of frame lag on initial firing / raycasting.
+func _physic_process(delta):
 	clear()
 	begin(Mesh.PRIMITIVE_LINES)
 	set_normal(Vector3(0, 0, 1))  # Set the line normal
